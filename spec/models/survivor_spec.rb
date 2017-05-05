@@ -39,4 +39,35 @@ RSpec.describe Survivor, type: :model do
       it { expect(subject.items.ammunition.count).to eq(1) }
     end
   end
+
+  describe '#methods' do
+    describe '#flag_infected #infected?' do
+      context 'once' do
+        let(:infected) { create(:survivor, infection_flags_count: 0) }
+
+        before { infected.flag_infected }
+
+        it { expect(infected.infection_flags_count).to eq(1) }
+        it { expect(infected.infected?).to be_falsey }
+      end
+
+      context 'twice' do
+        let(:infected) { create(:survivor, infection_flags_count: 1) }
+
+        before { infected.flag_infected }
+
+        it { expect(infected.infection_flags_count).to eq(2) }
+        it { expect(infected.infected?).to be_falsey }
+      end
+
+      context 'three times' do
+        let(:infected) { create(:survivor, infection_flags_count: 2) }
+
+        before { infected.flag_infected }
+
+        it { expect(infected.infection_flags_count).to eq(3) }
+        it { expect(infected.infected?).to be_truthy }
+      end
+    end
+  end
 end

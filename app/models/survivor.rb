@@ -13,6 +13,16 @@ class Survivor < ActiveRecord::Base
   # Callbacks
   after_create :fill_inventory
 
+  # Methods
+  def flag_infected
+    increment :infection_flags_count, 1
+    save
+  end
+
+  def infected?
+    infection_flags_count >= 3
+  end
+
   private
 
   def fill_inventory

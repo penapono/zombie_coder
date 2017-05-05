@@ -86,6 +86,17 @@ RSpec.describe Api::V1::SurvivorsController, type: :controller do
     end
   end
 
+  describe '#flag_infected' do
+    before { get :flag_infected, params: { id: survivor } }
+
+    it { is_expected.to respond_with :success }
+
+    it 'return message' do
+      expect(JSON.parse(response.body)["message"])
+        .to eq("Successfully marked as infected")
+    end
+  end
+
   describe '#update' do
     let(:name) { "Name" }
     let(:survivor) { create(:survivor, name: name) }

@@ -7,6 +7,7 @@ FactoryGirl.define do
     gender 0
     latitude "-22.8260663"
     longitude "-47.083327"
+    infection_flags_count 0
 
     trait :invalid do
       name nil
