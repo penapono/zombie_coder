@@ -6,4 +6,18 @@ class Survivor < ActiveRecord::Base
             :latitude,
             :longitude,
             presence: true
+
+  # Associations
+  has_many :items, dependent: :destroy
+
+  # Callbacks
+  after_create :fill_inventory
+
+  private
+
+  def fill_inventory
+    Item::INITIAL.each do |name, points|
+      items.create(name: name, points: points, ammount: 1)
+    end
+  end
 end

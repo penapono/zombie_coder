@@ -82,7 +82,7 @@ RSpec.describe Api::V1::SurvivorsController, type: :controller do
 
     it 'return survivor' do
       expect(JSON.parse(response.body).keys)
-        .to eq(%w[id name age gender latitude longitude])
+        .to eq(%w[id name age gender latitude longitude items])
     end
   end
 
