@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170506005929) do
+ActiveRecord::Schema.define(version: 20170506012331) do
 
   create_table "items", force: :cascade do |t|
     t.string  "name"
@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20170506005929) do
     t.integer "gender"
     t.string  "latitude"
     t.string  "longitude"
-    t.integer "status"
     t.integer "infection_flags_count", default: 0
   end
 

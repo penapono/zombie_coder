@@ -37,21 +37,16 @@ module Api
 
       def flag_infected
         if @survivor.flag_infected
-          render json: {
-            status: :success,
-            message: "Successfully marked as infected"
-          }
+          render json: { status: :success,
+                         message: "Successfully marked as infected" }
         else
-          render json: {
-            status: :error,
-            message: "Survivor couldn't be marked as infected"
-          }
+          render json: { status: :error,
+                         message: "Survivor couldn't be marked as infected" }
         end
       end
 
       def trade
-        trade =
-          Trade.new(@survivor, @to_survivor, @items_from, @items_to)
+        trade = Trade.new(@survivor, @to_survivor, @items_from, @items_to)
 
         if trade.call
           render json: {
