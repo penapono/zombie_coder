@@ -10,28 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170505193112) do
+ActiveRecord::Schema.define(version: 20170506005929) do
 
   create_table "items", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "ammount"
-    t.integer  "points"
-    t.integer  "survivor_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string  "name"
+    t.integer "ammount"
+    t.integer "points"
+    t.integer "survivor_id"
     t.index ["survivor_id"], name: "index_items_on_survivor_id"
   end
 
   create_table "survivors", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "age"
-    t.integer  "gender"
-    t.string   "latitude"
-    t.string   "longitude"
-    t.integer  "status"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
-    t.integer  "infection_flags_count", default: 0
+    t.string  "name"
+    t.integer "age"
+    t.integer "gender"
+    t.string  "latitude"
+    t.string  "longitude"
+    t.integer "status"
+    t.integer "infection_flags_count", default: 0
   end
 
 end
